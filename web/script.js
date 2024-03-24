@@ -30,7 +30,7 @@ function submitRequest(event) {
 }
 
 function fetchPhoto(requestCount) {
-    fetch('https://source.unsplash.com/random/400x400?sig={requestCount}')
+    fetch(`https://source.unsplash.com/random/400x400?sig=${requestCount}`)
     .then((response) => {
         const img = document.createElement("img");
         img.src = response.url
