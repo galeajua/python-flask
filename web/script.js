@@ -3,10 +3,24 @@ let requestCount = 0;
 function submitRequest(event) {
     event.preventDefault();
     const input = document.getElementById("username");
+    const errorText = document.getElementById("invalid-name");
+    const checkbox = document.getElementById("checkbox");
+    const errorTextCheckbox = document.getElementById("invalid-checkbox");
+    if (input.value.trim() == "" || !checkbox.checked) {
+        if (input.value.trim() == "") {
+            errorText.style.display = "block";
+        }
+        if (!checkbox.checked) {
+            errorTextCheckbox.style.display = "block";
+        }
+        return;
+    }
+    errorText.style.display = "none";
+    errorTextCheckbox.style.display = "none";
     const userName = input.value;
 
     document.getElementById("myName").innerHTML
-        = "Hi, " + userName + ", here is a random image for you..."
+        = "Hi " + userName + ", here is a random image for you..."
     requestCount++;
      setTimeout(() => {
         document.getElementById("myName").innerHTML = "";
